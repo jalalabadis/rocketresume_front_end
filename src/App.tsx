@@ -21,6 +21,10 @@ import Admin from './pages/admin/Admin';
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AllUser from './pages/admin/AllUser';
 import AllResumes from './pages/admin/AllResumes';
+import Traffic from './pages/admin/Traffic';
+import Analysis from './pages/admin/Analysis';
+import LiveChat from './components/LiveChat';
+import Support from './pages/admin/Support';
 // PrivateRoute component to protect authenticated routes
 const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
   const { isAuthenticated } = useAuth();
@@ -35,6 +39,7 @@ const AppContent = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {(!isDashboard&&!isAdmin) && <Navbar />}
+      {(!isDashboard&&!isAdmin) &&<LiveChat/>}
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
@@ -45,6 +50,9 @@ const AppContent = () => {
         <Route path="/admin/dashboard" element={<AdminDashboard/>} />
         <Route path="/admin/all-user" element={<AllUser/>} />
         <Route path="/admin/all-resumes" element={<AllResumes/>} />
+        <Route path="/admin/traffic" element={<Traffic/>} />
+        <Route path="/admin/analysis/:id" element={<Analysis/>} />
+        <Route path="/admin/support" element={<Support/>} />
         <Route
           path="/dashboard"
           element={

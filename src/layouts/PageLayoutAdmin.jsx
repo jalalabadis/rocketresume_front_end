@@ -27,8 +27,11 @@ function PageLayoutAdmin({ userData, setCurrentScreen, currentScreen, children, 
             <li className={`dashboard-menu-item ${location.pathname === '/admin/all-resumes' ? 'active' : ''}`}>
               <Link to="/admin/all-resumes">All Resume</Link>
             </li>
-            <li  className={`dashboard-menu-item ${location.pathname === '/support' ? 'active' : ''}`}>
-            <Link to="/support">Support Message</Link></li>
+            <li className={`dashboard-menu-item ${location.pathname === '/admin/traffic' ? 'active' : ''}`}>
+              <Link to="/admin/traffic">Traffic</Link>
+            </li>
+            <li  className={`dashboard-menu-item ${location.pathname === '/admin/support' ? 'active' : ''}`}>
+            <Link to="/admin/support">Support Message</Link></li>
           </ul>
         </aside>
         {/* <!-- Main Content --> */}

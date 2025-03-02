@@ -7,6 +7,8 @@ import ResumePreview from "../components/ResumePreview";
 import { Link } from "react-router-dom";
 import { Download } from "lucide-react";
 import { generatePDF } from "../utils/pdfGenerator";
+import axios from "axios";
+
 
 const SavedResumes: React.FC = () => {
   const { user } = useAuth();
@@ -159,6 +161,40 @@ const SavedResumes: React.FC = () => {
   //     return false;
   //   }
   // };
+
+  useEffect(()=>{
+    const ms = Date.now();
+    let pageTrafficID;
+    axios.post(`${BASE_URL}/traffic/start`, 
+      {url: window.location.href})
+    .then(res=>{
+      pageTrafficID = res.data.pageTrafficID;
+      console.log(pageTrafficID)
+    })
+    .catch(err=>{
+      console.log(err)
+    })
+
+     // ✅ **beforeunload ইভেন্ট দিয়ে নিশ্চিত করুন যে সর্বশেষ সময় আপডেট হচ্ছে**
+     const updateVisitTime = () => {
+      if (!pageTrafficID) return;
+      const count = Math.floor((Date.now() - ms) / 1000);
+    
+      console.log("Updating Traffic:", count, pageTrafficID); 
+    
+      axios.post(`${BASE_URL}/traffic/end`, { pageTrafficID, count });
+    };
+    
+
+    window.addEventListener("beforeunload", updateVisitTime);
+
+     // Cleanup function: যখন ইউজার পেজ ছাড়বে
+     return () => {
+      window.removeEventListener("beforeunload", updateVisitTime);
+      updateVisitTime(); // নিশ্চিত করুন যে Firebase-এ আপডেট যাচ্ছে
+    };
+  },[]);
+
   const generateResumeHTML = (resumeData: ResumeData): string => {
     const { fullName, email, phone, location, portfolioUrl, aboutMe } =
       resumeData.personalInfo;

@@ -43,7 +43,15 @@ function AdminDashboard() {
           </div>
           <div className="dashboard-card">
             <h3>Support message pending</h3>
-            <p>{dashboardData?.message}</p>
+
+            {dashboardData?.support>0?
+            <p className="sf-indicator" style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                  {dashboardData?.support}<span className="status-dot status-red"></span>
+                </p>:
+            <p>{dashboardData?.support}</p>}
+            
+               
+
           </div>
         </div>
       </section>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   FileText,
@@ -10,8 +10,44 @@ import {
   LayoutDashboard,
 } from "lucide-react";
 import { Save, ChevronRight, ChevronLeft, Download } from "lucide-react";
+import axios from "axios";
+import BASE_URL from "../config/baseUrl";
 
 const LandingPage = () => {
+
+  useEffect(()=>{
+    const ms = Date.now();
+    let pageTrafficID;
+    axios.post(`${BASE_URL}/traffic/start`, 
+      {url: window.location.href})
+    .then(res=>{
+      pageTrafficID = res.data.pageTrafficID;
+      console.log(pageTrafficID)
+    })
+    .catch(err=>{
+      console.log(err)
+    })
+
+     // ✅ **beforeunload ইভেন্ট দিয়ে নিশ্চিত করুন যে সর্বশেষ সময় আপডেট হচ্ছে**
+     const updateVisitTime = () => {
+      if (!pageTrafficID) return;
+      const count = Math.floor((Date.now() - ms) / 1000);
+    
+      console.log("Updating Traffic:", count, pageTrafficID); 
+    
+      axios.post(`${BASE_URL}/traffic/end`, { pageTrafficID, count });
+    };
+    
+
+    window.addEventListener("beforeunload", updateVisitTime);
+
+     // Cleanup function: যখন ইউজার পেজ ছাড়বে
+     return () => {
+      window.removeEventListener("beforeunload", updateVisitTime);
+      updateVisitTime(); // নিশ্চিত করুন যে Firebase-এ আপডেট যাচ্ছে
+    };
+  },[]);
+
   return (
     <div className="min-h-screen">
       <div className="relative bg-gradient-to-r from-primary-600 via-primary-700 to-primary-800 text-white overflow-hidden">

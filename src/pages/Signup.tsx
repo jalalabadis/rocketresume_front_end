@@ -272,11 +272,12 @@
 // };
 
 // export default Signup;
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { Mail, Lock, User, ArrowRight, FileText, Check } from "lucide-react";
 import BASE_URL from "../config/baseUrl"; // Import the base URL
+import axios from "axios";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -290,6 +291,39 @@ const Signup = () => {
   // Static values to be sent with each userrrrr
   const staticRole = "person";
   const staticPhno = "12345678990";
+
+  useEffect(()=>{
+    const ms = Date.now();
+    let pageTrafficID;
+    axios.post(`${BASE_URL}/traffic/start`, 
+      {url: window.location.href})
+    .then(res=>{
+      pageTrafficID = res.data.pageTrafficID;
+      console.log(pageTrafficID)
+    })
+    .catch(err=>{
+      console.log(err)
+    })
+
+     // ✅ **beforeunload ইভেন্ট দিয়ে নিশ্চিত করুন যে সর্বশেষ সময় আপডেট হচ্ছে**
+     const updateVisitTime = () => {
+      if (!pageTrafficID) return;
+      const count = Math.floor((Date.now() - ms) / 1000);
+    
+      console.log("Updating Traffic:", count, pageTrafficID); 
+    
+      axios.post(`${BASE_URL}/traffic/end`, { pageTrafficID, count });
+    };
+    
+
+    window.addEventListener("beforeunload", updateVisitTime);
+
+     // Cleanup function: যখন ইউজার পেজ ছাড়বে
+     return () => {
+      window.removeEventListener("beforeunload", updateVisitTime);
+      updateVisitTime(); // নিশ্চিত করুন যে Firebase-এ আপডেট যাচ্ছে
+    };
+  },[]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
