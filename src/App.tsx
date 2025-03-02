@@ -39,7 +39,7 @@ const AppContent = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {(!isDashboard&&!isAdmin) && <Navbar />}
-      {(!isDashboard&&!isAdmin) &&<LiveChat/>}
+      {(!isAdmin) &&<LiveChat/>}
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
