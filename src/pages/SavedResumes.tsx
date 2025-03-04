@@ -53,46 +53,34 @@ const SavedResumes: React.FC = () => {
   //   fetchResumes();
   // }, [user]);
   useEffect(() => {
+    if (!user || !user.id) return; // ইউজার না থাকলে কিছুই করো না
+    setLoading(true);
     const abortController = new AbortController();
-
-    const fetchResumes = async () => {
-      try {
-        if (!user?.id) {
-          setError("User not authenticated");
-          setLoading(false);
-          return;
-        }
-
-        const response = await fetch(
-          `${BASE_URL}/addresume/getallresumes/${user.id}`,
-          { signal: abortController.signal }
-        );
-
+  
+    fetch(`${BASE_URL}/addresume/getallresumes/${user.id}`, {
+      signal: abortController.signal,
+    })
+      .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-
-        const data = await response.json();
-        setResumes(Array.isArray(data) ? data : []);
-      } catch (err) {
+        return response.json();
+      })
+      .then((data) => setResumes(Array.isArray(data) ? data : []))
+      .catch((err) => {
         if (!abortController.signal.aborted) {
-          setError(
-            err instanceof Error ? err.message : "Failed to fetch resumes"
-          );
+          setError(err.message || "Failed to fetch resumes");
         }
-      } finally {
+      })
+      .finally(() => {
         if (!abortController.signal.aborted) {
           setLoading(false);
         }
-      }
-    };
-
-    fetchResumes();
-
-    return () => {
-      abortController.abort();
-    };
-  }, [user]); // Add BASE_URL if it's not constant
+      });
+  
+    return () => abortController.abort();
+  }, [user]); // user পরিবর্তিত হলে চলবে
+   // Add BASE_URL if it's not constant
   // Check the user's subscription status before allowing download/export
   // const checkSubscription = async (): Promise<boolean> => {
   //   try {
