@@ -1414,7 +1414,7 @@ const Dashboard: React.FC = () => {
           <div className="bg-white p-6 rounded-lg shadow-lg">
             <h2 className="text-xl font-semibold mb-4">Login Required</h2>
             <p className="mb-4">
-              Please log in or create an account to continue.
+            Get your PDF for free, register to download!
             </p>
             <div className="flex justify-end space-x-4">
               <button
