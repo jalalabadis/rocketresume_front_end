@@ -65,9 +65,9 @@ const LandingPage = () => {
 
   return (
     <div className="min-h-screen">
-      <div className="min-h-screen relative bg-gradient-to-r from-primary-600 via-primary-700 to-primary-800 text-white overflow-hidden">
+      <div className="min-h-screen relative bg-gradient-to-r from-primary-600 via-primary-700 to-primary-800 text-white overflow-hidden flex flex-col justify-center items-center">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80')] opacity-10 bg-cover bg-center" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+        <div className="relative max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-24 md:py-32">
           <div className="text-center">
             <span>🚀 Get More Interviews with the #1 AI Resume Creator!</span>
             
@@ -79,7 +79,7 @@ const LandingPage = () => {
             <p className="text-xl md:text-2xl mb-8 text-primary-100 animate-slide-up">
             Optimized templates for ATS, download as PDF, quick and easy.
             </p>
-            <div className="flex flex-col  justify-center items-center gap-4 animate-fade-in">
+            <div className="flex flex-col mt-[80px] whitespace-nowrap  justify-center items-center gap-4 animate-fade-in">
                      <Link
                       to="/dashboard"
                       className="w-full md:w-60 bg-orange-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-orange-600 transition duration-300 shadow-lg hover:shadow-xl"
@@ -118,13 +118,13 @@ const LandingPage = () => {
 
       {/* Resume Tamplete Section */}
 
-       <div className="py-16 bg-gray-50" id="demo-resume" style={{background:'#0082e6'}}>
+       <div className="py-16 bg-gray-50" id="demo-resume" >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center ">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-heading text-white">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-heading ">
             The first step towards your next job starts here
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto text-white">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto ">
             Recruiters assess a CV in just a few seconds. Make a great first impression
             with a professional and impactful template.
             </p>
@@ -138,8 +138,8 @@ const LandingPage = () => {
      
       <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl">
       <div>
-      <div className="flex items-center justify-start gap-2 text-white text-lg font-semibold mb-3">
-          <svg className="w-7 h-7" fill="white" viewBox="0 0 24 24">
+      <div className="flex items-center justify-start gap-2 text-gray-600 text-lg font-semibold mb-3">
+          <svg className="w-7 h-7" fill="gray" viewBox="0 0 24 24">
           <path fillRule="evenodd" clipRule="evenodd" d="M7.7587 2H16.2413C17.0463 1.99999 17.7106 1.99998 18.2518 2.04419C18.8139 2.09012 19.3306 2.18868 19.816 2.43598C20.5686 2.81947 21.1805 3.43139 21.564 4.18404C21.8113 4.66937 21.9099 5.18608 21.9558 5.74817C22 6.28936 22 6.95372 22 7.75868V16.2413C22 17.0463 22 17.7106 21.9558 18.2518C21.9099 18.8139 21.8113 19.3306 21.564 19.816C21.1805 20.5686 20.5686 21.1805 19.816 21.564C19.3306 21.8113 18.8139 21.9099 18.2518 21.9558C17.7106 22 17.0463 22 16.2413 22H7.75868C6.95372 22 6.28936 22 5.74817 21.9558C5.18608 21.9099 4.66937 21.8113 4.18404 21.564C3.43139 21.1805 2.81947 20.5686 2.43598 19.816C2.18868 19.3306 2.09012 18.8139 2.04419 18.2518C1.99998 17.7106 1.99999 17.0463 2 16.2413V7.7587C1.99999 6.95373 1.99998 6.28937 2.04419 5.74817C2.09012 5.18608 2.18868 4.66937 2.43597 4.18404C2.81947 3.43139 3.43139 2.81947 4.18404 2.43597C4.66937 2.18868 5.18608 2.09012 5.74817 2.04419C6.28937 1.99998 6.95373 1.99999 7.7587 2ZM4 10V16.2C4 17.0566 4.00078 17.6389 4.03755 18.089C4.07337 18.5274 4.1383 18.7516 4.21799 18.908C4.40973 19.2843 4.7157 19.5903 5.09202 19.782C5.24842 19.8617 5.47262 19.9266 5.91104 19.9624C6.36113 19.9992 6.94342 20 7.8 20H8L8 10H4ZM4 8V7.8C4 6.94342 4.00078 6.36113 4.03755 5.91104C4.07337 5.47262 4.1383 5.24842 4.21799 5.09202C4.40973 4.7157 4.7157 4.40973 5.09202 4.21799C5.24842 4.1383 5.47262 4.07337 5.91104 4.03755C6.36113 4.00078 6.94342 4 7.8 4H16.2C17.0566 4 17.6389 4.00078 18.089 4.03755C18.5274 4.07337 18.7516 4.1383 18.908 4.21799C19.2843 4.40973 19.5903 4.7157 19.782 5.09202C19.8617 5.24842 19.9266 5.47262 19.9624 5.91104C19.9992 6.36113 20 6.94342 20 7.8V8H4ZM10 10V20H16.2C17.0566 20 17.6389 19.9992 18.089 19.9624C18.5274 19.9266 18.7516 19.8617 18.908 19.782C19.2843 19.5903 19.5903 19.2843 19.782 18.908C19.8617 18.7516 19.9266 18.5274 19.9624 18.089C19.9992 17.6389 20 17.0566 20 16.2V10H10Z" fill="currentColor"></path>
           </svg>
           Split
@@ -152,8 +152,8 @@ const LandingPage = () => {
         />
         </div>
         <div>
-      <div className="flex items-center justify-start gap-2 text-white text-lg font-semibold mb-3">
-          <svg className="w-7 h-7" fill="white" viewBox="0 0 24 24">
+      <div className="flex items-center justify-start gap-2 text-gray-600 text-lg font-semibold mb-3">
+          <svg className="w-7 h-7" fill="gray" viewBox="0 0 24 24">
           <path fillRule="evenodd" clipRule="evenodd" d="M7.7587 2H16.2413C17.0463 1.99999 17.7106 1.99998 18.2518 2.04419C18.8139 2.09012 19.3306 2.18868 19.816 2.43598C20.5686 2.81947 21.1805 3.43139 21.564 4.18404C21.8113 4.66937 21.9099 5.18608 21.9558 5.74817C22 6.28936 22 6.95372 22 7.75868V16.2413C22 17.0463 22 17.7106 21.9558 18.2518C21.9099 18.8139 21.8113 19.3306 21.564 19.816C21.1805 20.5686 20.5686 21.1805 19.816 21.564C19.3306 21.8113 18.8139 21.9099 18.2518 21.9558C17.7106 22 17.0463 22 16.2413 22H7.75868C6.95372 22 6.28936 22 5.74817 21.9558C5.18608 21.9099 4.66937 21.8113 4.18404 21.564C3.43139 21.1805 2.81947 20.5686 2.43598 19.816C2.18868 19.3306 2.09012 18.8139 2.04419 18.2518C1.99998 17.7106 1.99999 17.0463 2 16.2413V7.7587C1.99999 6.95373 1.99998 6.28937 2.04419 5.74817C2.09012 5.18608 2.18868 4.66937 2.43597 4.18404C2.81947 3.43139 3.43139 2.81947 4.18404 2.43597C4.66937 2.18868 5.18608 2.09012 5.74817 2.04419C6.28937 1.99998 6.95373 1.99999 7.7587 2ZM4 10V16.2C4 17.0566 4.00078 17.6389 4.03755 18.089C4.07337 18.5274 4.1383 18.7516 4.21799 18.908C4.40973 19.2843 4.7157 19.5903 5.09202 19.782C5.24842 19.8617 5.47262 19.9266 5.91104 19.9624C6.36113 19.9992 6.94342 20 7.8 20H16.2C17.0566 20 17.6389 19.9992 18.089 19.9624C18.5274 19.9266 18.7516 19.8617 18.908 19.782C19.2843 19.5903 19.5903 19.2843 19.782 18.908C19.8617 18.7516 19.9266 18.5274 19.9624 18.089C19.9992 17.6389 20 17.0566 20 16.2V10H4ZM20 8H4V7.8C4 6.94342 4.00078 6.36113 4.03755 5.91104C4.07337 5.47262 4.1383 5.24842 4.21799 5.09202C4.40973 4.7157 4.7157 4.40973 5.09202 4.21799C5.24842 4.1383 5.47262 4.07337 5.91104 4.03755C6.36113 4.00078 6.94342 4 7.8 4H16.2C17.0566 4 17.6389 4.00078 18.089 4.03755C18.5274 4.07337 18.7516 4.1383 18.908 4.21799C19.2843 4.40973 19.5903 4.7157 19.782 5.09202C19.8617 5.24842 19.9266 5.47262 19.9624 5.91104C19.9992 6.36113 20 6.94342 20 7.8V8Z" fill="currentColor"></path>
           </svg>
           Classic
@@ -166,8 +166,8 @@ const LandingPage = () => {
         /></div>
 
       <div>
-      <div className="flex items-center justify-start gap-2 text-white text-lg font-semibold mb-3">
-          <svg className="w-7 h-7" fill="white" viewBox="0 0 24 24">
+      <div className="flex items-center justify-start gap-2 text-gray-600 text-lg font-semibold mb-3">
+          <svg className="w-7 h-7" fill="gray" viewBox="0 0 24 24">
        <path fillRule="evenodd" clipRule="evenodd" d="M22 7.7587L22 16.2413C22 17.0463 22 17.7106 21.9558 18.2518C21.9099 18.8139 21.8113 19.3306 21.564 19.816C21.1805 20.5686 20.5686 21.1805 19.816 21.564C19.3306 21.8113 18.8139 21.9099 18.2518 21.9558C17.7106 22 17.0463 22 16.2413 22L7.75867 22C6.95371 22 6.28936 22 5.74817 21.9558C5.18608 21.9099 4.66937 21.8113 4.18404 21.564C3.43139 21.1805 2.81947 20.5686 2.43597 19.816C2.18868 19.3306 2.09012 18.8139 2.04419 18.2518C1.99998 17.7106 1.99999 17.0463 2 16.2413L2 7.75868C1.99999 6.95372 1.99998 6.28936 2.04419 5.74817C2.09012 5.18608 2.18868 4.66937 2.43597 4.18404C2.81947 3.43139 3.43139 2.81947 4.18404 2.43597C4.66937 2.18868 5.18608 2.09012 5.74817 2.04419C6.28937 1.99998 6.95373 1.99999 7.7587 2L16.2413 2C17.0463 1.99999 17.7106 1.99998 18.2518 2.04419C18.8139 2.09012 19.3306 2.18868 19.816 2.43597C20.5686 2.81947 21.1805 3.43139 21.564 4.18404C21.8113 4.66937 21.9099 5.18608 21.9558 5.74817C22 6.28937 22 6.95373 22 7.7587ZM4 13L4 16.2C4 17.0566 4.00078 17.6389 4.03755 18.089C4.07337 18.5274 4.1383 18.7516 4.21799 18.908C4.40973 19.2843 4.71569 19.5903 5.09202 19.782C5.24842 19.8617 5.47262 19.9266 5.91104 19.9624C6.36113 19.9992 6.94342 20 7.8 20L11 20L11 13L4 13ZM11.999 11L4 11L4 7.8C4 6.94342 4.00078 6.36113 4.03755 5.91104C4.07337 5.47262 4.1383 5.24842 4.21799 5.09202C4.40973 4.71569 4.71569 4.40973 5.09202 4.21799C5.24842 4.1383 5.47262 4.07337 5.91104 4.03755C6.36113 4.00078 6.94342 4 7.8 4L16.2 4C17.0566 4 17.6389 4.00078 18.089 4.03755C18.5274 4.07337 18.7516 4.1383 18.908 4.21799C19.2843 4.40973 19.5903 4.7157 19.782 5.09202C19.8617 5.24842 19.9266 5.47262 19.9624 5.91104C19.9992 6.36113 20 6.94342 20 7.8L20 11L12.001 11C12.0007 11 11.9993 11 11.999 11C11.9993 11 11.9987 11 11.999 11ZM13 13L13 20L16.2 20C17.0566 20 17.6389 19.9992 18.089 19.9624C18.5274 19.9266 18.7516 19.8617 18.908 19.782C19.2843 19.5903 19.5903 19.2843 19.782 18.908C19.8617 18.7516 19.9266 18.5274 19.9624 18.089C19.9992 17.6389 20 17.0566 20 16.2L20 13L13 13Z" fill="currentColor"></path>
           </svg>
           Hybrid
@@ -191,13 +191,13 @@ const LandingPage = () => {
     </div>}
 
       {/* Features Section */}
-      <div className="mb-0 lg:-mt-[170px] py-[180px] bg-gray-50">
+      <div className="mb-0 lg:-mt-[170px] py-[180px] bg-gray-50" style={{background:'#0082e6'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-heading">
+            <h2 className="text-3xl md:text-4xl font-bold text-white  mb-4 font-heading">
               Why Choose Rocket Resume?
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-white max-w-2xl mx-auto">
               Create stunning resumes that get you noticed with our powerful
               features
             </p>
