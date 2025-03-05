@@ -65,12 +65,13 @@ const LandingPage = () => {
 
   return (
     <div className="min-h-screen">
-      <div className="relative bg-gradient-to-r from-primary-600 via-primary-700 to-primary-800 text-white overflow-hidden">
+      <div className="min-h-screen relative bg-gradient-to-r from-primary-600 via-primary-700 to-primary-800 text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80')] opacity-10 bg-cover bg-center" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
           <div className="text-center">
             <span>🚀 Get More Interviews with the #1 AI Resume Creator!</span>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 font-heading animate-slide-down">
+            
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 mt-6 font-heading animate-slide-down">
             Create a professional CV 
               <br />
               in 5 minutes - Free!
@@ -117,7 +118,7 @@ const LandingPage = () => {
 
       {/* Resume Tamplete Section */}
 
-       <div className=" py-16 bg-gray-50" id="demo-resume" style={{background:'#0082e6'}}>
+       <div className="py-16 bg-gray-50" id="demo-resume" style={{background:'#0082e6'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center ">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-heading text-white">
@@ -190,7 +191,7 @@ const LandingPage = () => {
     </div>}
 
       {/* Features Section */}
-      <div className="py-24 bg-gray-50">
+      <div className="mb-0 lg:-mt-[170px] py-[180px] bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-heading">
