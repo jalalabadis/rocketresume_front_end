@@ -951,6 +951,7 @@ const Dashboard: React.FC = () => {
       setShowLoginModal(true);
       return;
     }
+  
     const completeResumeData: ResumeData = {
       id: draftId || "",
       userId: user?.id || "",
@@ -960,20 +961,29 @@ const Dashboard: React.FC = () => {
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
     };
-    const html = generateResumeHTML(completeResumeData);
-    const blob = new Blob(["\ufeff", html], { type: "application/msword" });
+  
+    // Await the result of generatePDF since it's an async function
+    const blob = await generatePDF(completeResumeData);
+  
+    // Now create the Object URL
     const url = URL.createObjectURL(blob);
+  
+    // Create the download link
     const link = document.createElement("a");
     link.href = url;
     link.download = `${formData.personalInfo.fullName.replace(
       /\s+/g,
       "_"
-    )}_Resume.doc`;
+    )}_Resume.pdf`;
+  
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+  
+    // Revoke the URL after download
     URL.revokeObjectURL(url);
   };
+  
 
   // Update handlePrint to be an async function
   const handlePrint = async () => {
