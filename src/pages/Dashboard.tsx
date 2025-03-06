@@ -1632,8 +1632,9 @@ const Dashboard: React.FC = () => {
         </div>
       </div>
 
- <div className="flex w-100 mt-3 items-center justify-center">
- <div className="flex flex-col md:flex-row w-[96%] md:w-[95%] items-center justify-center md:justify-start gap-1 md:gap-8 text-center bg-gradient-to-r from-blue-500 to-indigo-500 px-6 py-2 rounded-lg shadow-lg">
+
+ <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5">
+ <div className="flex flex-col md:flex-row items-center justify-center md:justify-start gap-1 md:gap-8 text-center bg-gradient-to-r from-blue-500 to-indigo-500 px-6 py-2 rounded-lg shadow-lg">
  <span className="text-white text-sm sm:text-lg md:text-xl font-semibold mb-2">
   Take a look at our best work and get inspired!
 </span>
