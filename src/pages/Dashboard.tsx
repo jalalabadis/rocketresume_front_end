@@ -207,10 +207,10 @@ const Dashboard: React.FC = () => {
 
   const goToNextStep = async () => {
     await autoSaveDraft();
-    if (currentStep === 3 && !user) {
-      setShowLoginModal(true);
-      return;
-    }
+    // if (currentStep === 3 && !user) {
+    //   setShowLoginModal(true);
+    //   return;
+    // }
     if (currentStep < steps.length) {
       setCurrentStep((prev) => prev + 1);
     }
@@ -1020,90 +1020,13 @@ const Dashboard: React.FC = () => {
     { number: 7, title: "Review", description: "Review and finalize" },
   ];
 
-  // const goToNextStep = async () => {
-  //   await autoSaveDraft();
-  //   if (currentStep === 3 && !user) {
-  //     setShowLoginModal(true);
-  //     return;
-  //   }
-  //   if (currentStep < steps.length) {
-  //     setCurrentStep((prev) => prev + 1);
-  //   }
-  // };
-
-  // const goToPreviousStep = () => {
-  //   if (currentStep > 1) {
-  //     setCurrentStep((prev) => prev - 1);
-  //   }
-  // };
+  
 
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(formData));
   }, [formData]);
 
-  // Clear localStorage on successful save
-  // const handleSubmit = async (e: React.FormEvent) => {
-  //   e.preventDefault();
-
-  //   if (!user) {
-  //     setShowLoginModal(true);
-  //     return;
-  //   }
-
-  //   const canGenerateResume = await checkResumeLimit();
-  //   if (!canGenerateResume) {
-  //     setShowSubscriptionModal(true);
-  //     return;
-  //   }
-
-  //   let aboutMeText: string = formData.personalInfo.aboutMe?.trim() || "";
-  //   if (!aboutMeText) {
-  //     aboutMeText = await generateAboutMe();
-  //     setFormData((prev) => ({
-  //       ...prev,
-  //       personalInfo: { ...prev.personalInfo, aboutMe: aboutMeText },
-  //     }));
-  //   }
-
-  //   const resumeToSave: ResumeData = {
-  //     id: draftId || crypto.randomUUID(),
-  //     userId: user.id,
-  //     templateId: "template-1",
-  //     personalInfo: { ...formData.personalInfo, aboutMe: aboutMeText },
-  //     education: formData.education,
-  //     experience: formData.experience,
-  //     skills: formData.skills,
-  //     interests: formData.interests,
-  //     certifications: formData.certifications,
-  //     additionalSections: formData.additionalSections,
-  //     createdAt: new Date().toISOString(),
-  //     updatedAt: new Date().toISOString(),
-  //   };
-
-  //   try {
-  //     const response = await fetch(`${BASE_URL}/addresume/save`, {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify(resumeToSave),
-  //     });
-
-  //     if (!response.ok) {
-  //       const errorText = await response.text();
-  //       throw new Error(
-  //         `Failed to save resume: ${response.statusText} - ${errorText}`
-  //       );
-  //     }
-
-  //     const responseData = await response.json();
-  //     console.log("Save response data:", responseData);
-  //     setResumeSaved(true);
-
-  //     // Clear localStorage after successful save
-  //     localStorage.removeItem(LOCAL_STORAGE_KEY);
-  //   } catch (error) {
-  //     console.error("Error saving resume:", error);
-  //   }
-  // };
+  
   const handleDownload = async () => {
     try {
       // Check if the user has reached the resume limit
@@ -1141,82 +1064,7 @@ const Dashboard: React.FC = () => {
       alert("Failed to download resume. Please try again.");
     }
   };
-  // const handleSubmit = async (e: React.FormEvent) => {
-  //   e.preventDefault();
-    
-  //   setLoading(true); // Start loading
-  //   if (!user) {
-  //     //setShowLoginModal(true);
-  //     setPreviewResume(true);
-  //     setSelectedResume(formData);
-  //     setLoading(false); 
-  //     return;
-  //   }
-
-  //   // const canGenerateResume = await checkResumeLimit();
-  //   // if (!canGenerateResume) {
-  //   //   setShowSubscriptionModal(true);
-  //   //   return;
-  //   // }
-
-    
-
-  //   //let aboutMeText: string = formData.personalInfo.aboutMe?.trim() || "";
-  //   // if (!aboutMeText) {
-  //   //   aboutMeText = await generateAboutMe();
-  //   //   setFormData((prev) => ({
-  //   //     ...prev,
-  //   //     personalInfo: { ...prev.personalInfo, aboutMe: aboutMeText },
-  //   //   }));
-  //   // }
-
-  //   const resumeToSave: ResumeData = {
-  //     id: draftId || "",
-  //     userId: user.id,
-  //     templateId: "template-1",
-  //     personalInfo: { ...formData.personalInfo, aboutMe: 'aboutMeText' },
-  //     education: formData.education,
-  //     experience: formData.experience,
-  //     skills: formData.skills,
-  //     interests: formData.interests,
-  //     certifications: formData.certifications,
-  //     additionalSections: formData.additionalSections,
-  //     createdAt: new Date().toISOString(),
-  //     updatedAt: new Date().toISOString(),
-  //   };
-
-  //   try {
-  //     const response = await fetch(`${BASE_URL}/addresume/save`, {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify(resumeToSave),
-  //     });
-
-  //     if (!response.ok) {
-  //       const errorText = await response.text();
-  //       throw new Error(
-  //         `Failed to save resume: ${response.statusText} - ${errorText}`
-  //       );
-  //     }
-
-  //     const responseData = await response.json();
-  //     console.log("Save response data:", responseData);
-  //     setResumeSaved(true);
-
-  //     //setPreviewResume(true);
-  //     //setSelectedResume(formData);
-
-  //     // Clear localStorage after successful save
-  //     //localStorage.removeItem(LOCAL_STORAGE_KEY);
-
-  //     // Redirect to the "saved-resume" page after successful submissionaa
-  //     //window.location.href = "/saved-resumes"; // Use window.location.href to redirect
-  //   } catch (error) {
-  //     console.error("Error saving resume:", error);
-  //   } finally {
-  //     setLoading(false); // Stop loading
-  //   }
-  // };
+ 
 
 
   const handleSubmit = async (e: React.FormEvent) => {
